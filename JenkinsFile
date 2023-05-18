@@ -1,27 +1,17 @@
-{
-node{
-stage("git pool"){
-    git branch:"master",url:"https://github.com/LechqerHAtim/testingjenkins.git"
+node {
+    stage("git pull") {
+        git branch: "master", url: "https://github.com/LechqerHAtim/testingjenkins.git"
+    }
 
-}
-stage("install node models")
+    stage("install node modules") {
+        sh "npm install test-headless"
+    }
 
-{
-    sh "npm install test-headless"
-}
+    stage("build") {
+        sh "npm run build --prod"
+    }
 
-stage("build")
-
-{
-    sh "npm build --prod"
-}
-stage("copy")
-
-{
-    sh "cp -a /var/lib/jenkins/workspace/build-project/dist/testingjenkins/. /var/www/html/"
-}
-
-}
-
-
+    stage("copy") {
+        sh "cp -a /var/lib/jenkins/workspace/build-project/dist/testingjenkins/. /var/www/html/"
+    }
 }
