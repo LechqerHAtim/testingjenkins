@@ -7,6 +7,6 @@ node {
 
 
     stage("copy") {
-        sh "cp -a /var/lib/jenkins/workspace/build-project/dist/testingjenkins/. /var/www/html/"
+        sh "sudo cp -a /var/lib/jenkins/workspace/build-project/dist/testingjenkins/. /var/www/html/"
     }
 }
