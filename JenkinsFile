@@ -1,0 +1,27 @@
+{
+node{
+stage("git pool"){
+    git branch:"master",url:"https://github.com/LechqerHAtim/testingjenkins.git"
+
+}
+stage("install node models")
+
+{
+    sh "npm install test-headless"
+}
+
+stage("build")
+
+{
+    sh "npm build --prod"
+}
+stage("copy")
+
+{
+    sh "cp -a /var/lib/jenkins/workspace/build-project/dist/testingjenkins/. /var/www/html/"
+}
+
+}
+
+
+}
