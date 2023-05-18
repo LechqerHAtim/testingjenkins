@@ -3,9 +3,6 @@ node {
         git branch: "master", url: "https://github.com/LechqerHAtim/testingjenkins.git"
     }
 
-    stage("install node modules") {
-        sh "npm install"
-    }
 
 
 
